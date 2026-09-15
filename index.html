@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FinansPulse - AI-Powered Finance Bot</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0a1628; color: #fff; }
+.hero { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 40px 20px; background: linear-gradient(135deg, #0a1628 0%, #0d1f3c 100%); }
+.logo { display: flex; align-items: center; gap: 12px; margin-bottom: 40px; }
+.logo-icon { width: 60px; height: 60px; background: #c9a227; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 28px; }
+.logo-text { font-size: 32px; font-weight: 700; color: #c9a227; letter-spacing: 1px; }
+h1 { font-size: 48px; font-weight: 700; margin-bottom: 16px; line-height: 1.2; }
+h1 span { color: #c9a227; }
+.subtitle { font-size: 20px; color: #8aa0c0; margin-bottom: 40px; max-width: 600px; }
+.cta-buttons { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; margin-bottom: 60px; }
+.btn-primary { background: #c9a227; color: #0a1628; padding: 14px 32px; border-radius: 8px; font-size: 16px; font-weight: 600; text-decoration: none; transition: opacity 0.2s; }
+.btn-primary:hover { opacity: 0.9; }
+.btn-secondary { border: 2px solid #c9a227; color: #c9a227; padding: 14px 32px; border-radius: 8px; font-size: 16px; font-weight: 600; text-decoration: none; transition: all 0.2s; }
+.btn-secondary:hover { background: #c9a227; color: #0a1628; }
+.features { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; max-width: 900px; width: 100%; }
+.feature { background: #16213e; border: 1px solid #c9a22730; border-radius: 12px; padding: 24px; text-align: left; }
+.feature-icon { font-size: 32px; margin-bottom: 12px; }
+.feature h3 { font-size: 16px; font-weight: 600; margin-bottom: 8px; color: #c9a227; }
+.feature p { font-size: 14px; color: #8aa0c0; line-height: 1.6; }
+.stats { display: flex; gap: 40px; margin: 60px 0; flex-wrap: wrap; justify-content: center; }
+.stat { text-align: center; }
+.stat-number { font-size: 36px; font-weight: 700; color: #c9a227; }
+.stat-label { font-size: 14px; color: #8aa0c0; margin-top: 4px; }
+.divider { width: 1px; height: 60px; background: #c9a22730; }
+footer { background: #060e1e; padding: 24px; text-align: center; color: #4a6a90; font-size: 14px; }
+footer a { color: #c9a227; text-decoration: none; }
+@media (max-width: 600px) { h1 { font-size: 32px; } .divider { display: none; } }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="logo">
+    <div class="logo-icon">$</div>
+    <div class="logo-text">FinansPulse</div>
+  </div>
+
+  <h1>AI-Powered <span>Finance</span> Bot<br>for Telegram</h1>
+  <p class="subtitle">Technical analysis, AI price forecasting, real-time news, and price alerts — all in one Telegram bot.</p>
+
+  <div class="cta-buttons">
+    <a href="https://t.me/FinansPulseNewsBot" class="btn-primary">Try the Bot</a>
+    <a href="https://t.me/finanspulsenews" class="btn-secondary">Join Channel</a>
+  </div>
+
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-number">365</div>
+      <div class="stat-label">Days of training data</div>
+    </div>
+    <div class="divider"></div>
+    <div class="stat">
+      <div class="stat-number">7</div>
+      <div class="stat-label">Day AI forecast</div>
+    </div>
+    <div class="divider"></div>
+    <div class="stat">
+      <div class="stat-number">5+</div>
+      <div class="stat-label">Active users</div>
+    </div>
+    <div class="divider"></div>
+    <div class="stat">
+      <div class="stat-number">24/7</div>
+      <div class="stat-label">Always running</div>
+    </div>
+  </div>
+
+  <div class="features">
+    <div class="feature">
+      <div class="feature-icon">📊</div>
+      <h3>Technical Analysis</h3>
+      <p>RSI, MACD, Bollinger Bands, Trend Score with visual price charts.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">🤖</div>
+      <h3>AI Price Forecast</h3>
+      <p>7-day predictions using Random Forest + Linear Regression ensemble.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">📰</div>
+      <h3>Live News</h3>
+      <p>Reuters, Bloomberg HT, and more — financial news sent automatically.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">🔔</div>
+      <h3>Price Alerts</h3>
+      <p>Set custom alerts for any crypto. Get notified instantly on Telegram.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">💼</div>
+      <h3>Portfolio Tracker</h3>
+      <p>Track your assets, monitor real-time profit and loss.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">💎</div>
+      <h3>Subscription System</h3>
+      <p>Built-in premium tiers, payment flow, and admin approval system.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>FinansPulse &copy; 2026 &nbsp;|&nbsp; <a href="https://t.me/FinansPulseNewsBot">Telegram Bot</a> &nbsp;|&nbsp; <a href="https://t.me/finanspulsenews">News Channel</a></p>
+  <p style="margin-top:8px;">This bot is for informational purposes only. Not financial advice.</p>
+</footer>
+
+</body>
+</html>
