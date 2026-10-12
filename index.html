@@ -1,114 +1,515 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FinansPulse - AI-Powered Finance Bot</title>
+<title>FinansPulse</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap">
 <style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0a1628; color: #fff; }
-.hero { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 40px 20px; background: linear-gradient(135deg, #0a1628 0%, #0d1f3c 100%); }
-.logo { display: flex; align-items: center; gap: 12px; margin-bottom: 40px; }
-.logo-icon { width: 60px; height: 60px; background: #c9a227; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 28px; }
-.logo-text { font-size: 32px; font-weight: 700; color: #c9a227; letter-spacing: 1px; }
-h1 { font-size: 48px; font-weight: 700; margin-bottom: 16px; line-height: 1.2; }
-h1 span { color: #c9a227; }
-.subtitle { font-size: 20px; color: #8aa0c0; margin-bottom: 40px; max-width: 600px; }
-.cta-buttons { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; margin-bottom: 60px; }
-.btn-primary { background: #c9a227; color: #0a1628; padding: 14px 32px; border-radius: 8px; font-size: 16px; font-weight: 600; text-decoration: none; transition: opacity 0.2s; }
-.btn-primary:hover { opacity: 0.9; }
-.btn-secondary { border: 2px solid #c9a227; color: #c9a227; padding: 14px 32px; border-radius: 8px; font-size: 16px; font-weight: 600; text-decoration: none; transition: all 0.2s; }
-.btn-secondary:hover { background: #c9a227; color: #0a1628; }
-.features { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; max-width: 900px; width: 100%; }
-.feature { background: #16213e; border: 1px solid #c9a22730; border-radius: 12px; padding: 24px; text-align: left; }
-.feature-icon { font-size: 32px; margin-bottom: 12px; }
-.feature h3 { font-size: 16px; font-weight: 600; margin-bottom: 8px; color: #c9a227; }
-.feature p { font-size: 14px; color: #8aa0c0; line-height: 1.6; }
-.stats { display: flex; gap: 40px; margin: 60px 0; flex-wrap: wrap; justify-content: center; }
-.stat { text-align: center; }
-.stat-number { font-size: 36px; font-weight: 700; color: #c9a227; }
-.stat-label { font-size: 14px; color: #8aa0c0; margin-top: 4px; }
-.divider { width: 1px; height: 60px; background: #c9a22730; }
-footer { background: #060e1e; padding: 24px; text-align: center; color: #4a6a90; font-size: 14px; }
-footer a { color: #c9a227; text-decoration: none; }
-@media (max-width: 600px) { h1 { font-size: 32px; } .divider { display: none; } }
+/* Layout: single-column landing, dark-first with gold accent */
+:root {
+  --bg: #08111f;
+  --bg2: #0d1a2e;
+  --bg3: #112038;
+  --border: rgba(201,162,39,0.18);
+  --gold: #c9a227;
+  --gold2: #e8bc3a;
+  --fg: #e8edf5;
+  --fg2: #8aa0bf;
+  --fg3: #5a7090;
+  --green: #22c55e;
+  --red: #ef4444;
+  --radius: 12px;
+  color-scheme: dark;
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --bg: #f4f6fa;
+    --bg2: #ffffff;
+    --bg3: #eef1f8;
+    --border: rgba(180,140,20,0.2);
+    --gold: #b08a10;
+    --gold2: #c9a227;
+    --fg: #0d1a2e;
+    --fg2: #4a6080;
+    --fg3: #8aa0bf;
+    color-scheme: light;
+  }
+}
+:root[data-theme="light"] {
+  --bg: #f4f6fa; --bg2: #ffffff; --bg3: #eef1f8;
+  --border: rgba(180,140,20,0.2);
+  --gold: #b08a10; --gold2: #c9a227;
+  --fg: #0d1a2e; --fg2: #4a6080; --fg3: #8aa0bf;
+  color-scheme: light;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--fg);
+  line-height: 1.6;
+  padding-inline: 16px;
+}
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; }
+
+/* NAV */
+nav {
+  max-width: 960px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 20px;
+}
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--gold);
+}
+.nav-logo-icon {
+  width: 36px; height: 36px;
+  background: var(--gold);
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; color: var(--bg);
+}
+.nav-links { display: flex; gap: 24px; align-items: center; }
+.nav-links a { font-size: 14px; color: var(--fg2); transition: color .2s; }
+.nav-links a:hover { color: var(--gold); }
+.nav-cta {
+  background: var(--gold);
+  color: var(--bg) !important;
+  padding: 8px 18px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px !important;
+  transition: opacity .2s !important;
+}
+.nav-cta:hover { opacity: .85 !important; color: var(--bg) !important; }
+
+/* HERO */
+.hero {
+  max-width: 760px;
+  margin: 60px auto 80px;
+  text-align: center;
+}
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(201,162,39,0.12);
+  border: 1px solid var(--border);
+  color: var(--gold);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 5px 14px;
+  border-radius: 99px;
+  margin-bottom: 24px;
+  letter-spacing: .03em;
+}
+.hero h1 {
+  font-size: clamp(36px, 6vw, 60px);
+  font-weight: 800;
+  line-height: 1.1;
+  text-wrap: balance;
+  margin-bottom: 20px;
+}
+.hero h1 span { color: var(--gold); }
+.hero p {
+  font-size: 18px;
+  color: var(--fg2);
+  max-width: 540px;
+  margin: 0 auto 36px;
+  text-wrap: balance;
+}
+.hero-buttons {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.btn-primary {
+  background: var(--gold);
+  color: var(--bg);
+  padding: 14px 28px;
+  border-radius: var(--radius);
+  font-weight: 700;
+  font-size: 15px;
+  transition: opacity .2s;
+}
+.btn-primary:hover { opacity: .88; }
+.btn-outline {
+  border: 1.5px solid var(--border);
+  color: var(--fg);
+  padding: 14px 28px;
+  border-radius: var(--radius);
+  font-weight: 600;
+  font-size: 15px;
+  transition: border-color .2s, color .2s;
+}
+.btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+/* TICKER TAPE */
+.ticker-wrap {
+  background: var(--bg2);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  overflow: hidden;
+  padding-block: 12px;
+  margin-bottom: 80px;
+}
+.ticker {
+  display: flex;
+  gap: 48px;
+  animation: scroll 22s linear infinite;
+  width: max-content;
+}
+.ticker-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  white-space: nowrap;
+}
+.ticker-symbol { font-weight: 600; color: var(--fg); }
+.ticker-price { color: var(--fg2); }
+.up { color: var(--green); }
+.dn { color: var(--red); }
+@keyframes scroll { from { transform: translateX(0) } to { transform: translateX(-50%) } }
+
+/* SECTION */
+section { max-width: 960px; margin: 0 auto 80px; }
+.section-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+.section-title {
+  font-size: clamp(24px, 4vw, 36px);
+  font-weight: 800;
+  text-wrap: balance;
+  margin-bottom: 12px;
+}
+.section-sub {
+  font-size: 16px;
+  color: var(--fg2);
+  max-width: 500px;
+  margin-bottom: 40px;
+}
+
+/* FEATURES GRID */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
+.feature-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  transition: border-color .2s;
+}
+.feature-card:hover { border-color: rgba(201,162,39,0.45); }
+.feature-icon { font-size: 28px; margin-bottom: 14px; }
+.feature-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+.feature-card p { font-size: 14px; color: var(--fg2); line-height: 1.65; }
+
+/* STATS */
+.stats-row {
+  display: flex;
+  gap: 0;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  flex-wrap: wrap;
+}
+.stat-cell {
+  flex: 1;
+  min-width: 140px;
+  padding: 28px 24px;
+  border-right: 1px solid var(--border);
+  text-align: center;
+}
+.stat-cell:last-child { border-right: none; }
+.stat-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 32px;
+  font-weight: 600;
+  color: var(--gold);
+  font-variant-numeric: tabular-nums;
+}
+.stat-lbl { font-size: 13px; color: var(--fg2); margin-top: 4px; }
+
+/* PRICING */
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+.plan {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.plan.featured {
+  border-color: var(--gold);
+  background: var(--bg3);
+  position: relative;
+}
+.plan-badge {
+  position: absolute;
+  top: -12px; left: 50%;
+  transform: translateX(-50%);
+  background: var(--gold);
+  color: var(--bg);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  padding: 4px 14px;
+  border-radius: 99px;
+}
+.plan-name { font-size: 13px; font-weight: 700; color: var(--fg2); letter-spacing: .06em; text-transform: uppercase; }
+.plan-price { font-size: 40px; font-weight: 800; font-variant-numeric: tabular-nums; }
+.plan-price span { font-size: 16px; font-weight: 500; color: var(--fg2); }
+.plan-features { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.plan-features li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--fg2);
+}
+.plan-features li::before { content: "✓"; color: var(--green); font-weight: 700; flex-shrink: 0; }
+.plan-features li.no { color: var(--fg3); }
+.plan-features li.no::before { content: "×"; color: var(--fg3); }
+.plan-btn {
+  display: block;
+  text-align: center;
+  padding: 12px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 15px;
+  transition: opacity .2s;
+  margin-top: auto;
+}
+.plan-btn-primary { background: var(--gold); color: var(--bg); }
+.plan-btn-outline { border: 1.5px solid var(--border); color: var(--fg); }
+.plan-btn:hover { opacity: .85; }
+
+/* CHANNEL CTA */
+.channel-box {
+  background: linear-gradient(135deg, var(--bg2) 0%, var(--bg3) 100%);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 48px 32px;
+  text-align: center;
+}
+.channel-box h2 { font-size: 28px; font-weight: 800; margin-bottom: 12px; text-wrap: balance; }
+.channel-box p { color: var(--fg2); margin-bottom: 28px; font-size: 16px; }
+.channel-pills { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 28px; }
+.pill {
+  background: rgba(201,162,39,0.1);
+  border: 1px solid var(--border);
+  color: var(--gold);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 6px 16px;
+  border-radius: 99px;
+}
+
+/* FOOTER */
+footer {
+  background: var(--bg2);
+  border-top: 1px solid var(--border);
+  padding-block: 28px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--fg3);
+}
+footer a { color: var(--gold); }
+footer p + p { margin-top: 6px; }
 </style>
-</head>
-<body>
 
-<section class="hero">
-  <div class="logo">
-    <div class="logo-icon">$</div>
-    <div class="logo-text">FinansPulse</div>
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <div class="nav-logo-icon">$</div>
+    FinansPulse
   </div>
-
-  <h1>AI-Powered <span>Finance</span> Bot<br>for Telegram</h1>
-  <p class="subtitle">Technical analysis, AI price forecasting, real-time news, and price alerts — all in one Telegram bot.</p>
-
-  <div class="cta-buttons">
-    <a href="https://t.me/FinansPulseNewsBot" class="btn-primary">Try the Bot</a>
+  <div class="nav-links">
+    <a href="#features">Özellikler</a>
+    <a href="#pricing">Fiyat</a>
+    <a href="https://t.me/finanspulsenews" target="_blank">Kanal</a>
+    <a href="https://t.me/FinansPulseNewsBot" class="nav-cta" target="_blank">Botu Dene →</a>
   </div>
+</nav>
 
-  <div class="stats">
-    <div class="stat">
-      <div class="stat-number">365</div>
-      <div class="stat-label">Days of training data</div>
-    </div>
-    <div class="divider"></div>
-    <div class="stat">
-      <div class="stat-number">7</div>
-      <div class="stat-label">Day AI forecast</div>
-    </div>
-    <div class="divider"></div>
-    <div class="stat">
-      <div class="stat-number">5+</div>
-      <div class="stat-label">Active users</div>
-    </div>
-    <div class="divider"></div>
-    <div class="stat">
-      <div class="stat-number">24/7</div>
-      <div class="stat-label">Always running</div>
-    </div>
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">🤖 AI Destekli Finans Botu</div>
+  <h1>BIST, Kripto ve Forex'i<br><span>Tek Botla</span> Takip Et</h1>
+  <p>Teknik analiz, AI fiyat tahmini, anlık haberler ve fiyat alarmları — hepsi Telegram'da, ücretsiz dene.</p>
+  <div class="hero-buttons">
+    <a href="https://t.me/FinansPulseNewsBot" class="btn-primary" target="_blank">🚀 Botu Ücretsiz Dene</a>
+    <a href="https://t.me/finanspulsenews" class="btn-outline" target="_blank">📢 Kanalı Takip Et</a>
   </div>
+</div>
 
-  <div class="features">
-    <div class="feature">
-      <div class="feature-icon">📊</div>
-      <h3>Technical Analysis</h3>
-      <p>RSI, MACD, Bollinger Bands, Trend Score with visual price charts.</p>
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker">
+    <div class="ticker-item"><span class="ticker-symbol">₿ BTC</span><span class="ticker-price">$83,944</span><span class="up">▲ +1.2%</span></div>
+    <div class="ticker-item"><span class="ticker-symbol">💎 ETH</span><span class="ticker-price">$2,563</span><span class="up">▲ +2.4%</span></div>
+    <div class="ticker-item"><span class="ticker-symbol">BIST100</span><span class="ticker-price">12,266₺</span><span class="up">▲ +0.4%</span></div>
+    <div class="ticker-item"><span class="ticker-symbol">USD/TRY</span><span class="ticker-price">49.13₺</span><span class="dn">▼ -0.1%</span></div>
+    <div class="ticker-item"><span class="ticker-symbol">THYAO</span><span class="ticker-price">248.5₺</span><span class="up">▲ +1.8%</span></div>
+    <div class="ticker-item"><span class="ticker-symbol">SASE</span><span class="ticker-price">312.4₺</span><span class="dn">▼ -0.6%</span></div>
+    <div class="ticker-item"><span class="ticker-symbol">⚡ SOL</span><span class="ticker-price">$152</span><span class="up">▲ +3.1%</span></div>
+    <div class="ticker-item"><span class="ticker-symbol">🥇 Altın</span><span class="ticker-price">6,655₺</span><span class="up">▲ +0.8%</span></div>
+    <!-- duplicate for seamless loop -->
+    <div class="ticker-item"><span class="ticker-symbol">₿ BTC</span><span class="ticker-price">$83,944</span><span class="up">▲ +1.2%</span></div>
+    <div class="ticker-item"><span class="ticker-symbol">💎 ETH</span><span class="ticker-price">$2,563</span><span class="up">▲ +2.4%</span></div>
+    <div class="ticker-item"><span class="ticker-symbol">BIST100</span><span class="ticker-price">12,266₺</span><span class="up">▲ +0.4%</span></div>
+    <div class="ticker-item"><span class="ticker-symbol">USD/TRY</span><span class="ticker-price">49.13₺</span><span class="dn">▼ -0.1%</span></div>
+    <div class="ticker-item"><span class="ticker-symbol">THYAO</span><span class="ticker-price">248.5₺</span><span class="up">▲ +1.8%</span></div>
+    <div class="ticker-item"><span class="ticker-symbol">SASE</span><span class="ticker-price">312.4₺</span><span class="dn">▼ -0.6%</span></div>
+    <div class="ticker-item"><span class="ticker-symbol">⚡ SOL</span><span class="ticker-price">$152</span><span class="up">▲ +3.1%</span></div>
+    <div class="ticker-item"><span class="ticker-symbol">🥇 Altın</span><span class="ticker-price">6,655₺</span><span class="up">▲ +0.8%</span></div>
+  </div>
+</div>
+
+<!-- STATS -->
+<section>
+  <div class="stats-row">
+    <div class="stat-cell">
+      <div class="stat-num">50+</div>
+      <div class="stat-lbl">Teknik gösterge</div>
     </div>
-    <div class="feature">
-      <div class="feature-icon">🤖</div>
-      <h3>AI Price Forecast</h3>
-      <p>7-day predictions using Random Forest + Linear Regression ensemble.</p>
+    <div class="stat-cell">
+      <div class="stat-num">7G</div>
+      <div class="stat-lbl">AI fiyat tahmini</div>
     </div>
-    <div class="feature">
-      <div class="feature-icon">📰</div>
-      <h3>Live News</h3>
-      <p>Reuters, Bloomberg HT, and more — financial news sent automatically.</p>
+    <div class="stat-cell">
+      <div class="stat-num">3×</div>
+      <div class="stat-lbl">Günlük otomatik rapor</div>
     </div>
-    <div class="feature">
-      <div class="feature-icon">🔔</div>
-      <h3>Price Alerts</h3>
-      <p>Set custom alerts for any crypto. Get notified instantly on Telegram.</p>
-    </div>
-    <div class="feature">
-      <div class="feature-icon">💼</div>
-      <h3>Portfolio Tracker</h3>
-      <p>Track your assets, monitor real-time profit and loss.</p>
-    </div>
-    <div class="feature">
-      <div class="feature-icon">💎</div>
-      <h3>Subscription System</h3>
-      <p>Built-in premium tiers, payment flow, and admin approval system.</p>
+    <div class="stat-cell">
+      <div class="stat-num">24/7</div>
+      <div class="stat-lbl">Kesintisiz çalışır</div>
     </div>
   </div>
 </section>
 
-<footer>
-  <p>FinansPulse &copy; 2026 &nbsp;|&nbsp; <a href="https://t.me/FinansPulseNewsBot">Telegram Bot</a> &nbsp;|&nbsp; <a href="https://t.me/finanspulsenews">News Channel</a></p>
-  <p style="margin-top:8px;">This bot is for informational purposes only. Not financial advice.</p>
-</footer>
+<!-- FEATURES -->
+<section id="features">
+  <div class="section-label">Özellikler</div>
+  <div class="section-title">Yatırımcının ihtiyacı olan her şey</div>
+  <p class="section-sub">BIST, kripto, forex — tek bot, tek komut.</p>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon">📊</div>
+      <h3>Teknik Analiz</h3>
+      <p>RSI, MACD, Bollinger Bands, EMA, ATR, Stochastic — 50+ gösterge ile görsel grafik analizi.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🤖</div>
+      <h3>AI Fiyat Tahmini</h3>
+      <p>Random Forest + Lineer Regresyon modeli ile 7 günlük tahmin ve güven skoru.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🔔</div>
+      <h3>Fiyat Alarmları</h3>
+      <p>İstediğin fiyata alarm kur, hedef gelince Telegram'dan anında bildirim al.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">💼</div>
+      <h3>Portföy Takibi</h3>
+      <p>BIST, kripto ve forex varlıklarını ekle, gerçek zamanlı kâr/zarar görüntüle.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📰</div>
+      <h3>Anlık Haberler</h3>
+      <p>Reuters, Bloomberg HT ve daha fazlasından piyasayı etkileyen haberler otomatik gelir.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🌍</div>
+      <h3>Global Piyasalar</h3>
+      <p>BIST hisseleri, AAPL, TSLA, NVDA gibi global hisseler ve 10+ kripto para takibi.</p>
+    </div>
+  </div>
+</section>
 
-</body>
-</html>
+<!-- PRICING -->
+<section id="pricing">
+  <div class="section-label">Fiyatlandırma</div>
+  <div class="section-title">Ücretsiz başla, istersen yükselt</div>
+  <p class="section-sub">7 gün ücretsiz deneme. Kredi kartı gerekmez.</p>
+  <div class="pricing-grid">
+    <div class="plan">
+      <div>
+        <div class="plan-name">Ücretsiz</div>
+        <div class="plan-price">₺0 <span>/ ay</span></div>
+      </div>
+      <ul class="plan-features">
+        <li>3 gün ücretsiz deneme</li>
+        <li>Teknik analiz (temel)</li>
+        <li>Kripto fiyatları</li>
+        <li>BIST & Forex takibi</li>
+        <li class="no">AI fiyat tahmini</li>
+        <li class="no">Fiyat alarmları</li>
+        <li class="no">Portföy takibi</li>
+      </ul>
+      <a href="https://t.me/FinansPulseNewsBot" class="plan-btn plan-btn-outline" target="_blank">Başla</a>
+    </div>
+    <div class="plan featured">
+      <div class="plan-badge">⭐ EN POPÜLER</div>
+      <div>
+        <div class="plan-name">Premium</div>
+        <div class="plan-price">⭐ 500 <span>Stars / ay</span></div>
+      </div>
+      <ul class="plan-features">
+        <li>Her şey dahil</li>
+        <li>Teknik analiz (50+ gösterge)</li>
+        <li>AI 7 günlük fiyat tahmini</li>
+        <li>Sınırsız fiyat alarmı</li>
+        <li>Portföy takibi (50 varlık)</li>
+        <li>Öncelikli destek</li>
+      </ul>
+      <a href="https://t.me/FinansPulseNewsBot" class="plan-btn plan-btn-primary" target="_blank">Premium'a Geç →</a>
+    </div>
+  </div>
+</section>
+
+<!-- CHANNEL CTA -->
+<section>
+  <div class="channel-box">
+    <h2>Her gün 3 otomatik rapor</h2>
+    <p>Kanalımızı takip et, piyasa raporları sabah, kapanışta ve akşam gelsin.</p>
+    <div class="channel-pills">
+      <span class="pill">🌅 06:00 Sabah Raporu</span>
+      <span class="pill">📊 18:30 Kapanış</span>
+      <span class="pill">🌙 20:00 Kripto Özeti</span>
+    </div>
+    <a href="https://t.me/finanspulsenews" class="btn-primary" target="_blank">📢 Kanalı Takip Et</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>FinansPulse &copy; 2026 &nbsp;|&nbsp;
+    <a href="https://t.me/FinansPulseNewsBot" target="_blank">Telegram Bot</a> &nbsp;|&nbsp;
+    <a href="https://t.me/finanspulsenews" target="_blank">Haber Kanalı</a>
+  </p>
+  <p>Bu bot yalnızca bilgilendirme amaçlıdır. Yatırım tavsiyesi değildir.</p>
+</footer>
