@@ -1,7 +1,11 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>FinansPulse</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap">
 <style>
-/* Layout: single-column landing, dark-first with gold accent */
 :root {
   --bg: #08111f;
   --bg2: #0d1a2e;
@@ -19,15 +23,10 @@
 }
 @media (prefers-color-scheme: light) {
   :root:not([data-theme="dark"]) {
-    --bg: #f4f6fa;
-    --bg2: #ffffff;
-    --bg3: #eef1f8;
+    --bg: #f4f6fa; --bg2: #ffffff; --bg3: #eef1f8;
     --border: rgba(180,140,20,0.2);
-    --gold: #b08a10;
-    --gold2: #c9a227;
-    --fg: #0d1a2e;
-    --fg2: #4a6080;
-    --fg3: #8aa0bf;
+    --gold: #b08a10; --gold2: #c9a227;
+    --fg: #0d1a2e; --fg2: #4a6080; --fg3: #8aa0bf;
     color-scheme: light;
   }
 }
@@ -66,12 +65,11 @@ nav {
   font-size: 20px;
   color: var(--gold);
 }
-.nav-logo-icon {
-  width: 36px; height: 36px;
-  background: var(--gold);
-  border-radius: 8px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 18px; color: var(--bg);
+.nav-logo img {
+  height: 44px;
+  width: 44px;
+  border-radius: 10px;
+  object-fit: cover;
 }
 .nav-links { display: flex; gap: 24px; align-items: center; }
 .nav-links a { font-size: 14px; color: var(--fg2); transition: color .2s; }
@@ -148,6 +146,16 @@ nav {
   transition: border-color .2s, color .2s;
 }
 .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+.btn-coming {
+  border: 1.5px solid var(--border);
+  color: var(--fg3);
+  padding: 14px 28px;
+  border-radius: var(--radius);
+  font-weight: 600;
+  font-size: 15px;
+  cursor: default;
+  opacity: 0.7;
+}
 
 /* TICKER TAPE */
 .ticker-wrap {
@@ -201,6 +209,50 @@ section { max-width: 960px; margin: 0 auto 80px; }
   margin-bottom: 40px;
 }
 
+/* APP BANNER */
+.app-banner {
+  background: linear-gradient(135deg, var(--bg2) 0%, var(--bg3) 100%);
+  border: 1px solid var(--gold);
+  border-radius: 16px;
+  padding: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-bottom: 80px;
+  max-width: 960px;
+  margin-inline: auto;
+}
+.app-banner-left { display: flex; align-items: center; gap: 20px; }
+.app-banner-logo {
+  width: 72px; height: 72px;
+  border-radius: 16px;
+  object-fit: cover;
+  box-shadow: 0 4px 20px rgba(201,162,39,0.3);
+}
+.app-banner-text h3 { font-size: 20px; font-weight: 800; margin-bottom: 4px; }
+.app-banner-text p { font-size: 14px; color: var(--fg2); }
+.app-banner-btns { display: flex; gap: 10px; flex-wrap: wrap; }
+.store-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 14px;
+  transition: opacity .2s;
+}
+.store-btn-gold { background: var(--gold); color: var(--bg); }
+.store-btn-gold:hover { opacity: .88; }
+.store-btn-outline {
+  border: 1.5px solid var(--border);
+  color: var(--fg3);
+  cursor: default;
+  opacity: 0.6;
+}
+
 /* FEATURES GRID */
 .features-grid {
   display: grid;
@@ -218,6 +270,24 @@ section { max-width: 960px; margin: 0 auto 80px; }
 .feature-icon { font-size: 28px; margin-bottom: 14px; }
 .feature-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
 .feature-card p { font-size: 14px; color: var(--fg2); line-height: 1.65; }
+.feature-tag {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 99px;
+  background: rgba(201,162,39,0.12);
+  color: var(--gold);
+  border: 1px solid var(--border);
+}
+.feature-tag.green {
+  background: rgba(34,197,94,0.1);
+  color: var(--green);
+  border-color: rgba(34,197,94,0.2);
+}
 
 /* STATS */
 .stats-row {
@@ -339,12 +409,20 @@ footer {
 }
 footer a { color: var(--gold); }
 footer p + p { margin-top: 6px; }
+
+@media (max-width: 600px) {
+  .app-banner { flex-direction: column; align-items: flex-start; }
+  .nav-links { gap: 12px; }
+}
 </style>
+</head>
+<body>
 
 <!-- NAV -->
 <nav>
   <div class="nav-logo">
-    <img src="logo.jpg" alt="FinansPulse" style="height:40px;width:auto;border-radius:8px;">
+    <img src="logo.jpg" alt="FinansPulse Logo">
+    FinansPulse
   </div>
   <div class="nav-links">
     <a href="#features">Özellikler</a>
@@ -356,12 +434,13 @@ footer p + p { margin-top: 6px; }
 
 <!-- HERO -->
 <div class="hero">
-  <div class="hero-badge">🤖 AI Destekli Finans Botu</div>
-  <h1>BIST, Kripto ve Forex'i<br><span>Tek Botla</span> Takip Et</h1>
-  <p>Teknik analiz, AI fiyat tahmini, anlık haberler ve fiyat alarmları — hepsi Telegram'da, ücretsiz dene.</p>
+  <div class="hero-badge">📱 Telegram Bot + Mobil Uygulama</div>
+  <h1>BIST, Kripto ve Forex'i<br><span>Tek Platformda</span> Takip Et</h1>
+  <p>Teknik analiz, AI fiyat tahmini, anlık haberler ve fiyat alarmları — Telegram botunda ve mobil uygulamada.</p>
   <div class="hero-buttons">
     <a href="https://t.me/FinansPulseNewsBot" class="btn-primary" target="_blank">🚀 Botu Ücretsiz Dene</a>
     <a href="https://t.me/finanspulsenews" class="btn-outline" target="_blank">📢 Kanalı Takip Et</a>
+    <span class="btn-coming">📱 Google Play — Yakında</span>
   </div>
 </div>
 
@@ -376,7 +455,6 @@ footer p + p { margin-top: 6px; }
     <div class="ticker-item"><span class="ticker-symbol">SASE</span><span class="ticker-price">312.4₺</span><span class="dn">▼ -0.6%</span></div>
     <div class="ticker-item"><span class="ticker-symbol">⚡ SOL</span><span class="ticker-price">$152</span><span class="up">▲ +3.1%</span></div>
     <div class="ticker-item"><span class="ticker-symbol">🥇 Altın</span><span class="ticker-price">6,655₺</span><span class="up">▲ +0.8%</span></div>
-    <!-- duplicate for seamless loop -->
     <div class="ticker-item"><span class="ticker-symbol">₿ BTC</span><span class="ticker-price">$83,944</span><span class="up">▲ +1.2%</span></div>
     <div class="ticker-item"><span class="ticker-symbol">💎 ETH</span><span class="ticker-price">$2,563</span><span class="up">▲ +2.4%</span></div>
     <div class="ticker-item"><span class="ticker-symbol">BIST100</span><span class="ticker-price">12,266₺</span><span class="up">▲ +0.4%</span></div>
@@ -385,6 +463,21 @@ footer p + p { margin-top: 6px; }
     <div class="ticker-item"><span class="ticker-symbol">SASE</span><span class="ticker-price">312.4₺</span><span class="dn">▼ -0.6%</span></div>
     <div class="ticker-item"><span class="ticker-symbol">⚡ SOL</span><span class="ticker-price">$152</span><span class="up">▲ +3.1%</span></div>
     <div class="ticker-item"><span class="ticker-symbol">🥇 Altın</span><span class="ticker-price">6,655₺</span><span class="up">▲ +0.8%</span></div>
+  </div>
+</div>
+
+<!-- MOBİL UYGULAMA BANNER -->
+<div class="app-banner">
+  <div class="app-banner-left">
+    <img src="logo.jpg" alt="FinansPulse App" class="app-banner-logo">
+    <div class="app-banner-text">
+      <h3>📱 Mobil Uygulama Geliyor</h3>
+      <p>Ana Sayfa · Analiz · Alarmlar · Portföy — hepsi cebinde.<br>Google Play'de yakında yayında.</p>
+    </div>
+  </div>
+  <div class="app-banner-btns">
+    <a href="https://t.me/FinansPulseNewsBot" class="store-btn store-btn-gold" target="_blank">🤖 Telegram'da Dene</a>
+    <span class="store-btn store-btn-outline">▶ Google Play — Yakında</span>
   </div>
 </div>
 
@@ -414,37 +507,43 @@ footer p + p { margin-top: 6px; }
 <section id="features">
   <div class="section-label">Özellikler</div>
   <div class="section-title">Yatırımcının ihtiyacı olan her şey</div>
-  <p class="section-sub">BIST, kripto, forex — tek bot, tek komut.</p>
+  <p class="section-sub">BIST, kripto, forex — Telegram bot ve mobil uygulama, tek ekosistem.</p>
   <div class="features-grid">
     <div class="feature-card">
       <div class="feature-icon">📊</div>
       <h3>Teknik Analiz</h3>
       <p>RSI, MACD, Bollinger Bands, EMA, ATR, Stochastic — 50+ gösterge ile görsel grafik analizi.</p>
+      <span class="feature-tag">Bot + Uygulama</span>
     </div>
     <div class="feature-card">
       <div class="feature-icon">🤖</div>
       <h3>AI Fiyat Tahmini</h3>
       <p>Random Forest + Lineer Regresyon modeli ile 7 günlük tahmin ve güven skoru.</p>
+      <span class="feature-tag">Bot</span>
     </div>
     <div class="feature-card">
       <div class="feature-icon">🔔</div>
       <h3>Fiyat Alarmları</h3>
-      <p>İstediğin fiyata alarm kur, hedef gelince Telegram'dan anında bildirim al.</p>
+      <p>İstediğin fiyata alarm kur, hedef gelince anında bildirim al.</p>
+      <span class="feature-tag green">Bot + Uygulama</span>
     </div>
     <div class="feature-card">
       <div class="feature-icon">💼</div>
       <h3>Portföy Takibi</h3>
-      <p>BIST, kripto ve forex varlıklarını ekle, gerçek zamanlı kâr/zarar görüntüle.</p>
+      <p>Varlıklarını ekle, alış fiyatını gir, gerçek zamanlı kâr/zarar görüntüle.</p>
+      <span class="feature-tag green">Bot + Uygulama</span>
     </div>
     <div class="feature-card">
       <div class="feature-icon">📰</div>
       <h3>Anlık Haberler</h3>
       <p>Reuters, Bloomberg HT ve daha fazlasından piyasayı etkileyen haberler otomatik gelir.</p>
+      <span class="feature-tag">Bot</span>
     </div>
     <div class="feature-card">
       <div class="feature-icon">🌍</div>
       <h3>Global Piyasalar</h3>
       <p>BIST hisseleri, AAPL, TSLA, NVDA gibi global hisseler ve 10+ kripto para takibi.</p>
+      <span class="feature-tag green">Bot + Uygulama</span>
     </div>
   </div>
 </section>
@@ -483,6 +582,7 @@ footer p + p { margin-top: 6px; }
         <li>AI 7 günlük fiyat tahmini</li>
         <li>Sınırsız fiyat alarmı</li>
         <li>Portföy takibi (50 varlık)</li>
+        <li>Mobil uygulama erişimi</li>
         <li>Öncelikli destek</li>
       </ul>
       <a href="https://t.me/FinansPulseNewsBot" class="plan-btn plan-btn-primary" target="_blank">Premium'a Geç →</a>
@@ -510,5 +610,8 @@ footer p + p { margin-top: 6px; }
     <a href="https://t.me/FinansPulseNewsBot" target="_blank">Telegram Bot</a> &nbsp;|&nbsp;
     <a href="https://t.me/finanspulsenews" target="_blank">Haber Kanalı</a>
   </p>
-  <p>Bu bot yalnızca bilgilendirme amaçlıdır. Yatırım tavsiyesi değildir.</p>
+  <p>Bu platform yalnızca bilgilendirme amaçlıdır. Yatırım tavsiyesi değildir.</p>
 </footer>
+
+</body>
+</html>
